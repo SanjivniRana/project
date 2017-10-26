@@ -39,7 +39,8 @@ export class CustomerListingComponent implements OnInit {
                 // The response body may contain clues as to what went wrong,
                 console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
             }
-        });
+        }
+        );
     }
 
     deleteCustomer(cId) {

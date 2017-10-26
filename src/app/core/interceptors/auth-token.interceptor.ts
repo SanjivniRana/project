@@ -7,7 +7,7 @@ import { AuthService } from 'app/core/services/auth.service';
 export class TokenInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         console.log('XHR Intercepted...!!!');
-        
+
         // add authorization header with jwt token
         const dupReq = req.clone({ headers: req.headers.set('token', `${localStorage.getItem('currentUser')}`) });
 

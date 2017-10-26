@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
 
 @Component({
-    template: '<router-outlet></router-outlet>'
+    templateUrl: './forms.component.html'
 })
 export class FormsComponent {
-
+show:boolean=true;
 }

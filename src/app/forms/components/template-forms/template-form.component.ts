@@ -4,19 +4,21 @@ import { Router } from "@angular/router";
 import { IMyDpOptions } from 'mydatepicker';
 import { ToastrService } from "ngx-toastr";
 import { User } from "app/forms/components/template-forms/user";
+import { appConfig } from "app/core/config/app.config";
+import { HttpClient } from "@angular/common/http";
+
 @Component({
     selector: 'template-form',
     templateUrl: './template-form.component.html'
 })
 export class TemplateFormComponent {
+        result:any;
 
     @ViewChild('childModal') public childModal: ModalDirective;
     public user: User; // our model
-    constructor(private router: Router, private toastr: ToastrService) { }
+    constructor(private router: Router,private http: HttpClient, private toastr: ToastrService) { }
 
-    private myDatePickerOptions: IMyDpOptions = {
-        dateFormat: 'dd-mm-yyyy',
-    };
+ 
 
     ngOnInit() {
         this.user = new User("", "", "");
@@ -32,9 +34,15 @@ export class TemplateFormComponent {
 
     createCustomer(model: User, isValid) {
         if (!isValid) {
+            
             this.toastr.error('Please fix errors');
             //this.childModal.show();    
         } else {
+           
+            this.http.post(`${appConfig.apiUrl}/customers`,model, { observe: 'response' }).subscribe(data => {
+            this.toastr.error('Record Added');
+               }
+            );
             console.log(model)
         }
 

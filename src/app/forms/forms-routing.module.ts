@@ -10,7 +10,8 @@ const routes: Routes = [
         component: FormsComponent,
         children: [
             { path: '', component: TemplateFormComponent },
-            { path: 'reactive-form', component: ReactiveFormComponent }
+         //   { path: 'reactive-form', component: ReactiveFormComponent }
+     
         ]
     }
 ];
