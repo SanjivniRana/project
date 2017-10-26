@@ -1,6 +1,8 @@
 import { Component } from "@angular/core";
 import { AuthService } from "app/core/services/auth.service";
 import { Router } from "@angular/router";
+import { debug } from "util";
+import { User } from "app/login/models/user";
 
 @Component({
     selector: 'app-login',
@@ -9,22 +11,15 @@ import { Router } from "@angular/router";
 })
 export class LoginComponent {
 
-    message: string;
+    user = new User('bob', 'password');
 
     constructor(public authService: AuthService, public router: Router) {
-        this.setMessage();
-    }
 
-    setMessage() {
-        this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
     }
 
     login() {
-        this.message = 'Trying to log in ...';
-
-        this.authService.login().subscribe(() => {
-            this.setMessage();
-            if (this.authService.isLoggedIn) {
+        this.authService.login(this.user.userName, this.user.password).subscribe(() => {
+            if (this.authService) {
                 let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/';
 
                 // Redirect the user

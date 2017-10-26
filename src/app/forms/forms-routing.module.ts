@@ -4,7 +4,6 @@ import { FormsComponent } from "app/forms/forms.component";
 import { TemplateFormComponent } from "app/forms/components/template-forms/template-form.component";
 import { ReactiveFormComponent } from "app/forms/components/reactive-forms/reactive-form.component";
 
-
 const routes: Routes = [
     {
         path: '',

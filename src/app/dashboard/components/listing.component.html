@@ -1,22 +1,22 @@
 <main>
-  <h6>Dashboard</h6>
+  <h5>Dashboard</h5>
   <hr/>
   <table class="table table-hover">
-    <thead class="thead-default">
-      <tr>
-        <th>#</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th></th>
+    <thead>
+      <tr class="table-primary">
+        <td>#</td>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Email</td>
+        <td>Phone</td>
+        <td></td>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let customer of customers">
-        <th scope="row">{{customer.id}}</th>
-        <td>{{customer.fname}}</td>
-        <td>{{customer.lname}}</td>
+        <td scope="row">{{customer.id}}</td>
+        <td>{{customer.firstName}}</td>
+        <td>{{customer.lastName}}</td>
         <td>{{customer.email}}</td>
         <td>{{customer.phone}}</td>
         <td>
@@ -26,17 +26,7 @@
       </tr>
     </tbody>
   </table>
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-end">
-      <li class="page-item disabled">
-        <a class="page-link" href="#" tabindex="-1">Previous</a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
-      </li>
-    </ul>
-  </nav>
+  <div class="float-right">
+    <pagination [totalItems]="bigTotalItems" [(ngModel)]="bigCurrentPage" [maxSize]="maxSize" class="pagination-sm" [boundaryLinks]="true"></pagination>
+  </div>
 </main>
